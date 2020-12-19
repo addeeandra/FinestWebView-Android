@@ -17,6 +17,7 @@ import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
 
 import com.google.android.material.appbar.AppBarLayout.LayoutParams.ScrollFlags;
+import com.thefinestartist.Base;
 import com.thefinestartist.finestwebview.enums.Position;
 import com.thefinestartist.finestwebview.listeners.BroadCastManager;
 import com.thefinestartist.finestwebview.listeners.WebViewListener;
@@ -170,6 +171,8 @@ public class FinestWebView {
         public Builder(@NonNull Activity activity) {
             this.context = activity;
             this.res = activity.getResources();
+
+            Base.initialize(activity);
         }
 
         /**
@@ -180,6 +183,8 @@ public class FinestWebView {
         public Builder(@NonNull Context context) {
             this.context = context;
             this.res = context.getResources();
+
+            Base.initialize(context);
         }
 
         public Builder setWebViewListener(WebViewListener listener) {
