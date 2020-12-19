@@ -4,10 +4,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     defaultConfig {
         applicationId "com.thefinestartist.finestwebview.sample"
         minSdkVersion versions.minSdk
@@ -17,23 +14,27 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:' + versions.kotlin
     implementation 'androidx.core:core-ktx:' + versions.coreKtx
     implementation 'androidx.multidex:multidex:' + versions.multidex
     implementation 'com.google.android.material:material:' + versions.materialLib
 
     implementation project(':library')
-}
-repositories {
-    mavenCentral()
 }
