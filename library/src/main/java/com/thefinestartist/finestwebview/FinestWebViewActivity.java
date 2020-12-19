@@ -1220,22 +1220,12 @@ public class FinestWebViewActivity extends AppCompatActivity
             BroadCastManager.onProgressChanged(FinestWebViewActivity.this, key, progress);
 
             if (showSwipeRefreshLayout) {
-                if (swipeRefreshLayout.isRefreshing() && progress == 100) {
-                    swipeRefreshLayout.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            swipeRefreshLayout.setRefreshing(false);
-                        }
-                    });
+                if (progress == 100) {
+                    swipeRefreshLayout.post(() -> swipeRefreshLayout.setRefreshing(false));
                 }
 
                 if (!swipeRefreshLayout.isRefreshing() && progress != 100) {
-                    swipeRefreshLayout.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            swipeRefreshLayout.setRefreshing(true);
-                        }
-                    });
+                    swipeRefreshLayout.post(() -> swipeRefreshLayout.setRefreshing(true));
                 }
             }
 
