@@ -798,12 +798,7 @@ public class FinestWebViewActivity extends AppCompatActivity
         { // SwipeRefreshLayout
             swipeRefreshLayout.setEnabled(showSwipeRefreshLayout);
             if (showSwipeRefreshLayout) {
-                swipeRefreshLayout.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshLayout.setRefreshing(true);
-                    }
-                });
+                swipeRefreshLayout.post(() -> swipeRefreshLayout.setRefreshing(true));
             }
 
             if (swipeRefreshColors == null) {
@@ -812,12 +807,7 @@ public class FinestWebViewActivity extends AppCompatActivity
                 swipeRefreshLayout.setColorSchemeColors(swipeRefreshColors);
             }
 
-            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    webView.reload();
-                }
-            });
+            swipeRefreshLayout.setOnRefreshListener(() -> webView.reload());
         }
 
         { // Divider
